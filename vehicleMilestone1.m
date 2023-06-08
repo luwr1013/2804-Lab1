@@ -16,16 +16,16 @@ function constFuselage = calcFuselageDerivedInputs()% this function calculates a
 %% Defining Given Constants
 % Standard Atmosphere (assume sea level)
 constFuselage.alt = 0; % altitude
-[T, constFuselage.a, P, constFuselage.rho] = atmoscoesa(constFuselage.alt) % temp, speed of sound, pressure, density
+[T, constFuselage.a, P, constFuselage.rho, constFuselage.mu] = atmosisa(constFuselage.alt) % temp, speed of sound, pressure, density
 
 
-constFuselage.vel = [,,]; % velocity
-constFuselage.length = 0; % length
-constFuselage.mu = 0; % viscosity
+constFuselage.vel = [21,63.9,260.8]; % velocity(m/s)
+constFuselage.length = [1.56,8.33,70.7]; % length(m)
+constFuselage.mu = [1.7894*(10^(-5)),1.6612*(10^(-5)),1.4216*(10^(-5))]; % viscosity(kg/m*s)
 constFuselage.k = 0; % surface whatever
-constFuselage.Amax = 0; % max area
-constFuselage.radius=0;
-constFuselage.Q_body=1;
+constFuselage.Amax = [0.02,1.13,33.18]; % max area(m^2)
+constFuselage.radius=[0.08,0.6,3.25]; % radius(m)
+constFuselage.Q_body=[1,1,1];
 constFuselage.X = 0;
 constFuselage.c = 0;
 constFuselage.Xc=constFuselage.X/constFuselage.c;
@@ -34,7 +34,7 @@ constFuselage.lambda=  0;%sweep angle
 constFuselage.Q_wing = 0;
 constFuselage.S_ref = 0;
 constFuselage.A_base=0;
-constFuselage.Wingspan=0;
+constFuselage.Wingspan=[3.22,11,59.6]; % m
 %% Calculating reynolds number
 
 Re_1 = (constFuselage.rho * constFuselage.vel * constFuselage.length) / constFuselage.mu;
