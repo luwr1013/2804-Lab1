@@ -15,9 +15,10 @@ end
 function constFuselage = calcFuselageDerivedInputs()% this function calculates all the derived inputs needed for the fuselage
 %% Defining Given Constants
 % Standard Atmosphere (assume sea level)
-constFuselage.alt = 0; % altitude
-[T, constFuselage.a, P, constFuselage.rho, constFuselage.mu] = atmosisa(constFuselage.alt) % temp, speed of sound, pressure, density
-
+constFuselage.alt = [0, 4000, 13000]; % altitude(m)
+for i=1:3
+[T[i], constFuselage.a[i], P[i], constFuselage.rho[i]] = atmoscoesa(constFuselage.alt[i]); % temp, speed of sound, pressure, density
+end
 
 constFuselage.vel = [21,63.9,260.8]; % velocity(m/s)
 constFuselage.length = [1.56,8.33,70.7]; % length(m)
