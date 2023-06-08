@@ -1,6 +1,16 @@
 
 
 constFuselage = calcFuselageDerivedInputs();
+S_wet_body = zeros(3,1);
+cf_body = zeros(3,1);
+FF_body = zeros(3,1);
+cf_wing = zeros(3,1);
+FF_wing = zeros(3,1);
+S_wetwing = zeros(3,1);
+Dq = zeros(3,1);
+Cd0_misc = zeros(3,1);
+Cd0_tot = zeros(3,1);
+
 for i=1:3
 S_wet_body(i) =2*pi*constFuselage.radius*constFuselage.length;
 cf_body(i) = .455/((log10(constFuselage.Re))^2.58*(1+(.144*constFuselage.Mach)^2)^.65);
